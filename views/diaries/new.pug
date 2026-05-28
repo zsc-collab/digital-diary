@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+      form(action="/diaries/create", method="post")
+        .mb-3
+          label.form-label(for="diaryDate") 日付
+          input.form-control(type="date", id="diaryDate", name="diaryDate", required, value=formData.diaryDate)
+
+        .mb-3
+          label.form-label(for="weather") 天気
+          select.form-select(id="weather", name="weather", required)
+            option(value="") 選択してください
+            option(value="晴れ", selected=formData.weather === "晴れ") 晴れ
+            option(value="曇り", selected=formData.weather === "曇り") 曇り
+            option(value="雨", selected=formData.weather === "雨") 雨
+            option(value="雪", selected=formData.weather === "雪") 雪
+            option(value="その他", selected=formData.weather === "その他") その他
+
+        .mb-3
+          label.form-label(for="body") 本文
+          textarea.form-control(id="body", name="body", rows="10", maxlength="1000", required)= formData.body
+
+        button.btn.btn-primary(type="submit") 保存
+        a.btn.btn-secondary.ms-2(href="/diaries") 一覧へ戻る

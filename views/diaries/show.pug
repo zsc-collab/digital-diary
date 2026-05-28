@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+      .card.mb-3
+        .card-body
+          p
+            strong ID:
+            | #{diary.id}
+          p
+            strong 日付:
+            | #{diary.diaryDate.toISOString().slice(0, 10)}
+          p
+            strong 天気:
+            | #{diary.weather}
+          p
+            strong 本文:
+          p= diary.body
+          p
+            small.text-muted 作成日時: #{diary.createdAt.toLocaleString('ja-JP')}
+
+      a.btn.btn-primary(href=`/diaries/edit?id=${diary.id}`) 編集
+      a.btn.btn-secondary.ms-2(href="/diaries") 一覧へ戻る
+
+      form.mt-3(action=`/diaries/delete?id=${diary.id}`, method="post", onsubmit="return confirm('この日記を削除しますか？');")
+        button.btn.btn-danger(type="submit") 削除

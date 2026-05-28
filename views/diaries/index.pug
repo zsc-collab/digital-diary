@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  p
+    a.btn.btn-primary(href="/diaries/new") 新しい日記を書く
+
+  if diaries.length === 0
+    p.text-muted まだ日記がありません。
+  else
+    .row.g-3
+      each diary in diaries
+        .col-12
+          .card
+            .card-body
+              h5.card-title #{diary.diaryDate.toISOString().slice(0, 10)} / #{diary.weather}
+              p.card-text= diary.body
+              p.card-text
+                small.text-muted 作成日時: #{diary.createdAt.toLocaleString('ja-JP')}
+              a.btn.btn-outline-primary.btn-sm(href=`/diaries/show?id=${diary.id}`) 詳細を見る
