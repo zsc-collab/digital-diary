@@ -1,6 +1,6 @@
 'use strict';
 
-const BASE_URL = process.env.BASE_URL || 'http://localhost:8000';
+const BASE_URL = process.env.BASE_URL || 'http://localhost:8080';
 const AUTH = process.env.BASIC_AUTH || 'GM:1111';
 
 const authHeader = `Basic ${Buffer.from(AUTH).toString('base64')}`;
