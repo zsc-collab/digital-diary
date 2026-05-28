@@ -1,5 +1,7 @@
 node_modules/
+scripts/
 *.log
 yarn.lock
 .env
 users.htpasswd
+securityCheck.js
